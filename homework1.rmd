@@ -1,0 +1,83 @@
+---
+title: "homework1"
+author: "Brian"
+date: "February 2, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(ggplot2)
+
+```
+
+<div class='page-header text-uppercase'>
+  <h3>Question 1.8</h3>
+</div>
+
+* (a) Each row represents one observation in the sample. In this case, one UK resident.
+* (b) 1691 participants were included in the survey.
+* (c) __Numerical Continuous__: Age, __Numerical Discrete__: amtWeekends, amtWeekdays, __Categorical__: Sex, Marital, Smoke, __Categorical Ordinal__: grossIncome
+        
+<div class='page-header text-uppercase'>
+  <h3>Question 1.10</h3>
+</div>
+
+* (a) The population is children aged 5 to 15. The sample is the 160 children gathered for the experiment.
+* (b) Based on the information given in the question, yes, the study can be generalized to the population. Since this was an experiment, this study can establish a causal relationship.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 1.28</h3>
+</div>
+
+* (a) Although the study shows a strong link between smoking and dimentia, since this was an observational study and not an experiment, no causal link can be made between the two. 
+* (b) This statement is not jusitfied because correlation does not imply causation. It is possible that there is a lurking or confounding variable that is unaccounted for. The sleeping disorder could just be a symptom.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 1.36</h3>
+</div>
+
+* (a) This is an experiment
+* (b) The __treatment__ is to exercise twice a week. The __control__ is to not exercise.
+* (c) This study does use blocking based on the age of the participant.
+* (d) There is no blinding. As the participant must be told explicitly to exercise or not, the patient must know which group they are in.
+* (e) Since this is an experiement, a causal link can be made. Whether or not the conclusions can be generalized depends on whether the samples are representatitive of the population as a whole.
+* (f) A number of important criteria are left out of the description. The doctor performing the mental health exams should be blinded from which group the participants were place in. I would further restrict the population to those that currently do not exercise. This will help ensure that past lifestyle choices will have a minimized effect on the outcomes of the experiement. Finally, consideration must be made to the fact that the researcher is running an experiment that may result in participants having lowered mental health.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 1.48</h3>
+</div>
+
+```{r, message=FALSE}
+data <- data.frame(c(57, 66, 69, 71, 72, 73, 74, 77, 78, 78, 79, 79, 81, 81, 82, 83, 83, 88, 89, 94))
+ggplot(data, aes(x="", y=data)) + geom_boxplot() + labs(title='Scores of Introductory Statistics Students') + xlab('') + ylab('Score')
+```
+
+<div class='page-header text-uppercase'>
+  <h3>Question 1.50</h3>
+</div>
+
+* (a) The histogram is roughly normally distributed with a mean around 60. It has outliers above and beneath. It matches with boxplot (2)
+* (b) The histogram is roughly uniformily distributed. The mean and median are about 50. It maches with boxplot (3)
+* (c) The histogram is skew right. The median is between 1 and 2. It has numerous upper outliers. It matches with boxplot (1)
+
+<div class='page-header text-uppercase'>
+  <h3>Question 1.56</h3>
+</div>
+
+* (a) This data is likely skewed right. 1/2 the data sits below 450k but the remaining half is spread up through 6000k. The data would best be described by the median and the IQR.
+* (b) This data is roughly symmetric. The data would best be described by the mean and the standard deviation.
+* (c) This data is likely skewed right. There will be a large number of students who drink 0 and very few who drink excessively. The data would best be described by the median and the IQR.
+* (d) This data is likely skewed right. Most employees will likely make a similar amount of money with a very small number of incredibly wealthy individual who make more. The data would best be described by the median and the IQR.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 1.70</h3>
+</div>
+
+* (a) The mosaic plot heavily implies that survival is dependent on receiving a transplant. The rate of survival rises dramatically in this case. Thus they are not independent.
+* (b) The box plots indicate that receiving a transplant will have a strong positive effect on the number of days of survival. More than 1/2 of all transplant recipients survived longer than the controls upperbound (excluding outliers) and it appears that the lower bound of the transplant group is roughly equal to the median of the control group.
+* (c) $\frac{45}{69}$ or ~65% of the treatment group died. $\frac{30}{34}$ or ~88% of the control group died.
+* (d) 
+  + (i) Heart transplant candidates can improve their survival time by receiving a heart transplant.
+  + (ii) 28, 75, 34, 69, approximately 0, below approximately -.23
+  + (iii) As only 2 of the simulations are below -.23 we can conclude that it is unlikely that our results were just due to chance. This suggests that receiving a heart transplant is an effective means of increasing surivival.
