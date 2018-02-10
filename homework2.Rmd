@@ -1,0 +1,90 @@
+---
+title: "homework2"
+author: "Brian"
+date: "February 10, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(VennDiagram)
+library(tidyverse)
+```
+<link rel="stylesheet" href="C:\\Users\\Brian\\Desktop\\GradClasses\\Spring18\\607\\assignments\\custom.css">
+
+<div class='page-header text-uppercase'>
+  <h3>Question 2.6</h3>
+</div>
+
+* (a) P(Sum = 1) = $\frac{0}{36}$ = 0
+* (b) P(Sum = 5) = $\frac{10}{36}$ $\approx$ 27.7%
+* (c) P(Sum = 12) = $\frac{1}{36}$ $\approx$ 2.7%
+
+<div class='page-header text-uppercase'>
+  <h3>Question 2.8</h3>
+</div>
+
+* (a) No. As the probability of living below the poverty line and speaking a language other than English is greater than 0%, the two events are not disjoint.
+* (b) 
+
+```{r, warning=FALSE, message=FALSE}
+draw.pairwise.venn(area1=14.6, area2=20.7, cross.area=4.2,category=c('Below Poverty Line', 'Non English Speaking'), fill=c('light green', 'light pink'), cat.pos=c(0,0))
+```
+
+* (c) 10.4% as per the venn diagram.
+* (d) 31.1% as per the venn diagram.
+* (e) P(not Below Poverty Line and Speak English) = 1 - .165 - .104 - .042 = .689 or 68.9%
+* (f) P(Below Poverty Line) = 14.6%  P(Below Poverty Line | Non English Speaking) = 4.2/16.5 $\approx$ 25.5% As the probabilities are different, the events are NOT independent.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 2.20</h3>
+</div>
+
+* (a) P(Male Blue or Female Blue) = (114 + 108 - 78)/204 $\approx$ 70.6%
+* (b) P(Female Blue | Male Blue) = 78 / 114 $\approx$ 68.4%
+* (c) P(Female Blue | Male Brown) = 19 / 54 $\approx$ 35.2%
+      P(Female Blue | Male Green) = 11 / 36 $\approx$ 30.6%
+* (d) There appears to be some evidence that these events are not independent. Approximately 50% of respondents have blue eyes however there is no pairing where respondents with blue eyes make up half of the partners. In fact, they make up a disproportionaly larger proportion (68.4%) in Blue/Blue pairings and a disproportionaly small proportion (35.2% and 30.6%) in Brown and Green pairings respectively. Whether or not this difference is statistically significant is not clear.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 2.30</h3>
+</div>
+
+* (a) P(HardCover)$\times$P(Paperback Fiction|HardCover) = $\frac{28}{95}\times\frac{59}{94}\approx$ 18.5%
+* (b) P(Fiction and Paperback)$\times$P(Hardcover|Fiction and Paperback) + P(Fiction and Hardcover)$\times$P(Hardcover|Fiction and Hardcover) = $\frac{59}{95}\times\frac{28}{94}$ + $\frac{13}{95}\times\frac{27}{94}\approx$ 22.4%
+* (c) P(Fiction and Paperback)$\times$P(Hardcover) + P(Fiction and Hardcover)$\times$P(Hardcover) = $\frac{59}{95}\times\frac{28}{95}$ + $\frac{13}{95}\times\frac{28}{95}\approx$ 22.3%
+* (d) The probability in part (c) is lower than that of part (b) because we must account for the possibility of redrawing the first selected book during our second draw. This is not possible in part (b) and thus increases our likelyhood of selecting a hardcover book. However, since there are so many books on the shelf, the likelyhood of redrawing this book is not particularly high and thus it does not have a large effect on the resulting probability.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 2.38</h3>
+</div>
+
+* (a) $E[x]$ = P(0 Bags) $\times$ 0 + P(1 Bag) $\times$ 25 + P(2 Bags) $\times$ 60 = $15.70
+ $Var(X)$ = 644.5 - 246.49 = 398.01
+ $SD(X)$ = $\sqrt{398.01}\approx$ $19.95
+
+| Bags | 0 | 1  | 2  |
+|:-----|---|----|----|
+| Cost | 0 | 25 | 60 |
+| Prob |.54|.34 |.12 |
+|  E   | 0 |8.5 |7.2 |
+|  V   | 0 |212.5|432|
+
+* (b) Expected Revenue: 15.70 $\times$ 120 = $1884 Standard Deviation: $\sqrt{120\times 398.01}\approx$ $218.54
+
+This answer assumes that the amount paid by each person on the plane is independent. It's unclear if this is an acceptable assumption to make. I would imagine that families are both likely to travel together and to pack similarly (heavy or light for example). In addition, this assumes that the distribution of checked bags across all flights is the same and this seems incredibly unlikely. Short local flights most likely have fewer checked bags than longer, international flights.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 2.44</h3>
+</div>
+
+```{r, warning=FALSE}
+to_plot <- setNames(data.frame(c('<10', '10-15', '15-25', '25-35', '35-50', '50-64', '65-75', '75-100', '100+'), c(.022, .047, .158, .183, .212, .139, .058, .084, .097)), c('Income', 'Total')) 
+to_plot$Income <- factor(to_plot$Income, levels=to_plot$Income)
+ggplot(to_plot, aes(x=Income, y=Total)) + geom_bar(stat='identity')
+```
+
+* (a) The data is heavily clustered around 15-64 thousand. The differing bin sizes make it difficult to determine the distribution with must more accuracy. There does seem to be a disproportionate amount of salaries above $100,000.
+* (b) P(Income < 50000) = .022 + .047 + .158 + .183 + .212 = 62.2%
+* (c) I'm not really certain how to address this question logically. I am aware that women in general make less than men do and that men are disproportionally represented in this sample. This would indicate that the true proportion of women making less than $50000 annually is greater than 62.2% while the true proportion of men making less than $50000 annually is less than 62.2%. Any other predicition would be beyond speculation.
+* (d) The broad assumption I made in part (c) appears to hold some validity based on the quoted 71.8% figure.
