@@ -1,0 +1,194 @@
+---
+title: "homework3"
+author: "Brian"
+date: "February 18, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+<link rel="stylesheet" href="C:\\Users\\Brian\\Desktop\\GradClasses\\Spring18\\607\\assignments\\custom.css">
+
+<div class='page-header text-uppercase'>
+  <h3>Question 3.2</h3>
+</div>
+
+```{r}
+normal.plot <- ggplot(data=data.frame(x=c(-3,3)), aes(x)) + stat_function(fun=dnorm, args=list(mean=0, sd=1))
+normal.plot + stat_function(fun=dnorm, xlim=c(-1.13, 3), geom='area')
+pnorm(q=-1.13, mean=0, sd=1, lower.tail=FALSE)
+```
+
+* a. $\approx$ 87%
+
+```{r}
+normal.plot + stat_function(fun=dnorm, xlim=c(-3, .18), geom='area')
+pnorm(q=.18, mean=0, sd=1)
+```
+
+* b. $\approx$ 57%
+
+```{r}
+normal.plot + stat_function(fun=dnorm, xlim=c(3, 3), geom='area')
+pnorm(q=8, mean=0, sd=1, lower.tail=FALSE)
+```
+
+* c. $\approx$ 0%
+
+```{r}
+normal.plot + stat_function(fun=dnorm, xlim=c(-.5, .5), geom='area')
+pnorm(q=.5, mean=0, sd=1) - pnorm(q=-.5, mean=0, sd=1)
+```
+
+* d. $\approx$ 38%
+
+<div class='page-header text-uppercase'>
+  <h3>Question 3.4</h3>
+</div>
+
+* a. Men's: $N(4313, 583)$ Women's: $N(5261, 807)$
+
+* b. Leo's Z-score: $\frac{4948-4313}{583} \approx 1.09$ 
+  Mary's Z-score: $\frac{5513-5261}{807} \approx 0.31$
+
+Leo's finishing time z-score is 1.08 meaning that his time is about 1 standard deviation above the mean finishing times in his group. Mary's is 0.31 meaning that she is approximately 0.31 standard deviation above her groups finishing time.  
+</br>
+
+* c. Mary performed better than Leo. While both times are bove average, her's has a smaller z score indiciating that she performed better than a larger proportion of her group than Leo did of his group.
+
+```{r}
+pnorm(q=4948, mean=4313, sd=583, lower.tail=FALSE)
+```
+
+* d. $\approx$ 14%
+
+```{r}
+pnorm(q=5513, mean=5261, sd=807, lower.tail=FALSE)
+```
+
+* e. $\approx$ 37%
+ 
+* f. b would remain the same. A z-score is a z-score. The formula does not change based on the distribution. c through e however would change. The linking of z score to a certain proportion of the population is contingent on the data being roughly normally distributed. Without this information there is no consistant way to use the z-score to determine the porportion of racers Leo or Mary performed better than.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 3.18</h3>
+</div>
+
+* a. Yes, the data adhears to the 68-95-99.7 rule
+
+```{r}
+female.heights <- c(54, 55, 56, 56, 57, 58, 58, 59, 60, 60, 60, 61, 61, 62, 62, 63, 63, 63, 64, 65, 65, 67, 67, 69, 73)
+length(female.heights[female.heights > 56.94 & female.heights < 66.1]) / 25
+```
+
+Z-score for 68% is -1 to 1 corresponding to a range of (56.94, 66.1)
+
+```{r}
+length(female.heights[female.heights > 52.36 & female.heights < 70.69]) / 25 #96%
+```
+
+Z-score for 95% is -1 to 1 corresponding to a range of (52.36, 70.69)
+
+```{r}
+length(female.heights[female.heights > 47.78 & female.heights < 75.26]) / 25 #68%
+```
+
+Z-score for 99.7% is -1 to 1 corresponding to a range of (47.78, 75.26)
+
+```{r, include=FALSE}
+qqnormsim <- function (dat) {
+  par(mfrow = c(3, 3))
+  qqnorm(dat, main = "Normal QQ Plot (Data)")
+  qqline(dat)
+  for (i in 1:8) {
+    simnorm <- rnorm(n = length(dat), mean = mean(dat), 
+                     sd = sd(dat))
+    qqnorm(simnorm, main = "Normal QQ Plot (Sim)")
+    qqline(simnorm)
+  }
+  par(mfrow = c(1, 1))
+}
+```
+
+```{r}
+qqnormsim(female.heights)
+```
+
+* b. The actual data looks very similar to the simulated data. Most of the values fit nicely on the normal probability plot line with a few upper and lower outliers. It is safe to say that this data is roughly normal.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 3.22</h3>
+</div>
+
+```{r}
+dgeom(9, .02)
+```
+
+* a. 9 failures followed by a success at 2% has $\approx$ 1.6% chance of occuring
+
+```{r}
+pgeom(100, .02)
+```
+
+* b. $\approx$ 87% chance of 100 successes in a row
+
+* c. Mean = $\frac{1}{.02}$ =50 SD = $\frac{\sqrt{1-.02}}{.02} \approx$ 49.49
+
+* d. Mean = $\frac{1}{.05}$ =20 SD = $\frac{\sqrt{1-.05}}{.05} \approx$ 19.49
+
+* e. As the probability of success (finding a defective piece) decreases, the mean increases. This makes sense as a lower chance of success would indicate more trials before a success. The standard deviation follows this logic as well.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 3.38</h3>
+</div>
+
+```{r}
+dbinom(2, 3, .51)
+```
+
+* a. $\approx$ 38%
+
+* b. MMF, MFM, FMM 0.51 $\times$ 0.51 $\times$ 0.49 + 0.51 $\times$ 0.49 $\times$ 0.51 + 0.49 $\times$ 0.51 $\times$ 0.51 $\approx$ 38%
+
+* c. There is no need to perform seperate calculations for each scenario, account for disjoing probabilities, and sum those values. This would be tedious, repetitive work.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 3.42</h3>
+</div>
+
+```{r}
+dnbinom(7, 3, .15)
+```
+
+* a. $\approx$ 3.9%
+
+* b. 15%. The trials are independent
+
+* c. The probability calculated in part b is not equivalent to that in part a. We cannot ignore the fact that her 10th serve will, in some scenarios, have a 0% chance of being her 3rd successful serve.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
