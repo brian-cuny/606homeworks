@@ -1,0 +1,87 @@
+---
+output: html_document
+---
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="./custom.css">
+
+<div class='jumbotron'>
+  <h2 class='display-3 text-uppercase'>Homework 4.14 - Waiting at an ER</h2>
+  <h4 class='right text-uppercase'>By Brian Weinfeld</h4>
+  <div class='clearfix'></div>
+  <h5 class='right text-uppercase'>March 6th, 2018</h5>
+</div>
+
+<div class='well'>
+A hospital administrator hoping to improve wait times decides to estimate the average emergency room waiting time at her hospital. She collects a simple random sample of 64 patients and determines the time (in minutes) between when they checked in to the ER until they were first seen by a doctor. A 95% confidence interval based on this sample is (128 minutes, 147 minutes), which is based on the normal model for the mean. Determine whether the following statements are true or false, and explain your reasoning.
+</div>
+
+<div class='well'>
+<h3>Simple Random Sample of 64 elements.</h3>
+<h3>95% Confidence Interval is (128, 147)</h3>
+<h3>Interval based on normal model for the mean</h3>
+</div>
+
+<div class='well'>
+<p>(a) This confidence interval is not valid since we do not know if the population distribution of the ER wait times is nearly Normal. </p>
+</div>
+
+<div class='alert alert-danger'>
+<p> False. The original distribution's center, shape or spread are irrelevant to finding the confidence interval. It is the sampling distribution that must be roughly normal.</p>
+</div>
+
+<div class='well'>
+<p>(b) We are 95% confident that the average waiting time of these 64 emergency room patients is between 128 and 147 minutes. </p>
+</div>
+
+<div class='alert alert-success'>
+<p>True (book says False, but I disagree). This statement is true, but it is misleading. We sampled 64 patients and we know for a fact that these patients average waiting time is $\frac{128+147}{2}=137.5$ minutes. So we can say with 100% confidence their waiting time is between 128 and 147. In fact, we are 100% confidence their average waiting time is 137.5 minutes. </p>
+</div>
+
+<div class='well'>
+<p>(c) We are 95% confident that the average waiting time of all patients at this hospital's emergency room is between 128 and 147 minutes.</p>
+</div>
+
+<div class='alert alert-success'>
+<p>True. This statement is the correct, meaningful interpretation of a confidence interval.</p>
+</div>
+
+<div class='well'>
+<p>(d) 95% of random samples have a sample mean between 128 and 147 minutes.</p>
+</div>
+
+<div class='alert alert-danger'>
+<p>False. The purpose of a confidence interval is to estimate a population mean. It makes no predictions about the sample mean of other confidence intervals.</p>
+</div>
+
+<div class='well'>
+<p>(e) A 99% confidence interval would be narrower than the 95% confidence interval since we need to be more sure of our estimate. </p>
+</div>
+
+<div class='alert alert-danger'>
+<p>False. The larger the confidence interval, the larger the range of values. Mathematically, this is due to the larger critical values (1.96 vs. 2.576 in this case). Logically, to be more confident that we have the correct answer, we need to encompass more possible answers.</p>
+</div>
+
+<div class='well'>
+<p>(f) The margin of error is 9.5 and the sample mean is 137.5.</p>
+</div>
+
+<div class='alert alert-success'>
+<p>True. The sample mean is $\frac{128+147}{2}=137.5$. The margin of error is $147-137.5=9.5$ This calculation is valid only because we know the model is normal.</p>
+</div>
+
+<div class='well'>
+<p>(g) In order to decrease the margin of error of a 95% confidence interval to half of what it is now, we would need to double the sample size. </p>
+</div>
+
+<div class='alert alert-danger'>
+<p> False. The standard error takes the square root of the number of people in the sample. Conceptually, this means that each additional person added to the sample provides less information than the one prior to it. Mathematically, this means we need 4 times as many people in the sample to halve the confidence interval range.</p>
+
+$$\frac{46}{\sqrt{64}}=9.5$$
+$$\frac{76}{\sqrt{n}}=4.75, n=256$$
+</div>
+
+
+
+
+
+
