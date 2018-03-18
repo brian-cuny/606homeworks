@@ -1,0 +1,112 @@
+---
+title: "homework5"
+author: "Brian"
+date: "March 18th, 2018"
+output: 
+  html_document:
+    css: custom.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+<div class='page-header text-uppercase'>
+  <h3>Question 5.6</h3>
+</div>
+
+* Sample Mean: $\frac{65+77}{2}=71$
+* Margin Of Error: $77-71=6$
+* Sample Standard Deviation: $6=1.71\times\frac{s}{\sqrt{25}}$ $s=17.54$
+
+
+<div class='page-header text-uppercase'>
+  <h3>Question 5.14</h3>
+</div>
+
+* a. $25=1.645\times\frac{250}{\sqrt{n}}$ $n=270$
+
+* b. Larger. To be more confident in the final solution with the same margin of error, more samples must be taken. This will result in a larger n, which is account for the larger SE.
+
+* c. $25=2.576\times\frac{250}{\sqrt{n}}$ $n=664$
+
+
+<div class='page-header text-uppercase'>
+  <h3>Question 5.20</h3>
+</div>
+
+* a. No. Both IQR cover the same area and the difference between the two is roughly centered around 0.
+
+* b. Yes, independance is a reasonable assumption.
+
+* c. 
+$H_0: u_{diff}=0$
+$H_a: u_{diff}\neq0$
+
+* d. The observations are independent and their are more than 30 observations. The conditions required to complete this test are met.
+
+* e. $u=-0.545$ $SE=\frac{8.887}{\sqrt{200}}\approx0.628$
+
+$\frac{0.545-0}{0.628}\approx{0.867}$ $df=199$ 
+
+As the value 0.628 is smaller than all values on the table, the results are not significant. We fail to reject the null hypothesis. This data does not provide compelling evidence of a difference in scores.
+
+* f. We may have made a type 2 error, failing to reject when we should have. That is, we asserted there was no evidence of a difference when it fact there was.
+
+* g. Yes. A confidence interval would likely include 0 as that would indicate that there is no difference between the two populations.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 5.32</h3>
+</div>
+
+$H_0:u_{diff}=0$ $H_a:u_{diff}\neq0$
+
+$u_{diff}=19.85-16.12=3.73$  $SE=\sqrt{\frac{3.58^2}{26}+\frac{4.51^2}{26}}\approx1.129$ $df=25$
+
+$t^*=\frac{3.73-0}{1.129}\approx3.303$ As this statistic is larger than all associated significance values we reject the null hypothesis. There is strong evidence to suggest that there is a difference in city mpg when comparing automatic transmission cars to manual transmissions cars.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 5.48</h3>
+</div>
+
+* a. $H_0:u_{<hs}=u_{hs}=u_{jrc}=u_{ba}=u_{grad}$ $H_a:$ The avearge varies across some or all groups.
+
+* b. All observations must be independent, the data in each group must be nearly normal, and the variance within each gorup must be approximately equal. The second two conditions can be verified by observation of the given data, and the first conditional can be safely assumed.
+
+* c. 
+
+x|DF|Sum SQ|Mean Sq|F Value|Pr(>F)
+-|--|------|-------|-------|------
+degree|4|2006.16|501.54|2.19|.0682
+residuals|1168|267382|228.92||
+total|1172|269388.16
+
+* d. With a p-value of .0682 being above .05 (but below .1) there is evidence, although not strong, to suggest a difference in the mean number of hours worked based on level of education obtained.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
