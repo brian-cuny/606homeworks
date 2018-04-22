@@ -1,0 +1,70 @@
+---
+title: "homework8"
+author: "Brian"
+date: "April 22nd, 2018"
+output: 
+  html_document:
+    css: custom.css
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+<div class='page-header text-uppercase'>
+  <h3>Question 8.2</h3>
+</div>
+
+* a. $\widehat{weight}=-1.93\times parity+120.07$
+* b. If a child is the first born it will weigh a predicted 120.07 ounces and if it is not the first born it will weigh a predicted $120.07-1.93=118.14$ ounces. The slope indicates a drop of 1.93 ounces for non-first born babies
+* c. With a p-value above 0.1, there is no evidence to suggest that subsiquent children weigh less than first born children.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 8.4</h3>
+</div>
+
+* a. $\widehat{absent days}=-9.11\times eth+3.10\times sex+2.15\times lrn+18.93$
+* b. The $eth$ slope indicates a drop in about 9 missed days for non aboriginal students. The $sex$ slope indicates an increase of 3 misesd days for boys compared to girls. The $lrn$ slope indicates an increase of 2 missed days for slow learners compared to average learners.
+* c. $\widehat{absent days}=-9.11\times 0+3.10\times 1+2.15\times 1+18.93=24.18$ Residual: $24.18-2=22.18$ days 
+* d. $R^2=1-\frac{240.57}{264.17}=0.08933641$ $R^2_{adj}=1-\frac{240.57}{264.17}\times \frac{145}{142}=0.070097$
+
+<div class='page-header text-uppercase'>
+  <h3>Question 8.8</h3>
+</div>
+
+The learner status should be removed first as it provides the greatest adjusted $R^2$ without it being included in the model.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 8.16</h3>
+</div>
+
+* a. It appears that there is a threshold where Orings no longer function. Somehwere between 57 degrees F and 53 degrees F the Orings begin to fail. Anything above 57 degrees appears safe.
+* b. The slope of the temperature is both statistically significant (p-value of essentially 0) and negative. This indicates that as the temperature rises the predicted number of failing Orings drops. The intercept is not interpretable in this context as no observations are close to a temperature of 0 degrees F.
+* c. $\widehat{oring failure}=-0.2162\times temp+11.6630$
+* d. Yes, the p-value on the temperature variable indicates a strong relationship. It should be noted however that this data has one extreme outlier in shuttle mission number 1. It is possible that there was some other reason for the failure. However, as human lives are on the line, I believe it is better to be conservative and take the results at face value until such a time that further evidence can lend more insight.
+
+<div class='page-header text-uppercase'>
+  <h3>Question 8.18</h3>
+</div>
+
+* a. (51, 0.6540297) (53, 0.5509228) (55, 0.4432456)
+
+```{r}
+p <- c(51, 53, 55)
+
+exp(11.6630-0.2162*p) / (1 + exp(11.6630-0.2162*p))
+```
+
+* b. 
+
+```{r}
+data <- data.frame(prob=c(0.341, 0.251, 0.179, 0.124, 0.084, 0.056, 0.037, 0.024, 0.654, 0.551, 0.443), temp=c(57, 59, 61, 63, 65, 67, 69, 71, 51, 53, 55))
+
+ggplot(data, aes(x=temp, y=prob)) +
+  geom_point() +
+  geom_smooth()
+```
+
+* c. As mentioned in the previous question, we are basing this off of one extreme outlier. It is cause for concern that this one result may be heavily skewing our result. In order to use a logistic regression 2 conditions are required. First the predictor is linearly related to the logit(p) and second, each outcome is independent of the other outcomes.
